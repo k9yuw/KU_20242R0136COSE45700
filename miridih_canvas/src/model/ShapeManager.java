@@ -55,7 +55,7 @@ public class ShapeManager implements Subject{
         } else {
             this.shapeSelection.selectShape(shape); // 다중 선택 로직은 Composite에서 처리
         }
-        notifyObservers(); // 변경 사항 알림
+        notifyObservers();
     }
 
     private ShapeInterface findShapeAt(int x, int y) {
@@ -86,7 +86,7 @@ public class ShapeManager implements Subject{
     public void moveZOrderForward(ShapeInterface shape) {
         int index = shapes.indexOf(shape);
         if (index >= 0 && index < shapes.size() - 1) {
-            Collections.swap(shapes, index, index + 1); // 현재 위치와 다음 위치를 스왑
+            Collections.swap(shapes, index, index + 1);
             notifyObservers();
         }
     }
@@ -95,7 +95,7 @@ public class ShapeManager implements Subject{
     public void moveZOrderBackward(ShapeInterface shape) {
         int index = shapes.indexOf(shape);
         if (index > 0) {
-            Collections.swap(shapes, index, index - 1); // 현재 위치와 이전 위치를 스왑
+            Collections.swap(shapes, index, index - 1);
             notifyObservers();
         }
     }
@@ -103,7 +103,7 @@ public class ShapeManager implements Subject{
     // 기능 6-3: 선택된 도형의 순서 맨 앞으로 이동
     public void moveZOrderToMostFront(ShapeInterface shape) {
         if (shapes.remove(shape)) {
-            shapes.add(0, shape); // 리스트의 첫 번째 위치로 이동
+            shapes.add(0, shape);
             notifyObservers();
         }
     }

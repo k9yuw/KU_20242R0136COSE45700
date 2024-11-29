@@ -66,6 +66,29 @@ public class ShapeSelectionComposite implements ShapeInterface, Iterable<ShapeIn
         return false;
     }
 
+
+    @Override
+    public String getX() {
+        if (shapes.size() == 1) return shapes.get(0).getX();
+        return "";
+    }
+
+    @Override
+    public String getY() {
+        if (shapes.size() == 1) return shapes.get(0).getY();
+        return "";
+    }
+
+    @Override
+    public void setX(int x) {
+        if (shapes.size() == 1) shapes.get(0).setX(x);
+    }
+
+    @Override
+    public void setY(int y) {
+        if (shapes.size() == 1) shapes.get(0).setY(y);
+    }
+
     @Override
     public String getWidth() {
         if (shapes.size() == 1) return shapes.get(0).getWidth();
@@ -90,27 +113,6 @@ public class ShapeSelectionComposite implements ShapeInterface, Iterable<ShapeIn
         if (shapes.size() == 1) shapes.get(0).setHeight(height);
     }
 
-    @Override
-    public String getX() {
-        if (shapes.size() == 1) return shapes.get(0).getX();
-        return "";
-    }
-
-    @Override
-    public String getY() {
-        if (shapes.size() == 1) return shapes.get(0).getY();
-        return "";
-    }
-
-    @Override
-    public void setX(int x) {
-        if (shapes.size() == 1) shapes.get(0).setX(x);
-    }
-
-    @Override
-    public void setY(int y) {
-        if (shapes.size() == 1) shapes.get(0).setY(y);
-    }
 
     @Override
     public void setBorder(Color borderColor, int borderThickness) {

@@ -10,17 +10,17 @@ public interface ShapeInterface extends Serializable {
 
     boolean contains(int x, int y);
 
-    String getWidth();
-    String getHeight();
-
-    void setWidth(int width);
-    void setHeight(int height);
-
     String getX();
     String getY();
 
     void setX(int x);
     void setY(int y);
+
+    String getWidth();
+    String getHeight();
+
+    void setWidth(int width);
+    void setHeight(int height);
 
     void setBorder(Color borderColor, int borderThickness);
 }
