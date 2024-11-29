@@ -19,7 +19,7 @@ public class PropertyPanel extends JPanel implements Observer {
         this.shapeManager = shapeManager;
         shapeManager.addObserver(this);
 
-        JLabel xLabel = new JLabel("X:");
+        JLabel xLabel = new JLabel("X값:");
         xField = new JTextField(10);
         xField.getDocument().addDocumentListener(createDocumentListener(() -> {
             int x = parseSafeInt(xField.getText());
@@ -27,7 +27,7 @@ public class PropertyPanel extends JPanel implements Observer {
             controller.move(x, y);
         }));
 
-        JLabel yLabel = new JLabel("Y:");
+        JLabel yLabel = new JLabel("Y값:");
         yField = new JTextField(10);
         yField.getDocument().addDocumentListener(createDocumentListener(() -> {
             int x = parseSafeInt(xField.getText());
@@ -35,7 +35,7 @@ public class PropertyPanel extends JPanel implements Observer {
             controller.move(x, y);
         }));
 
-        JLabel widthLabel = new JLabel("Width:");
+        JLabel widthLabel = new JLabel("너비:");
         widthField = new JTextField(10);
         widthField.getDocument().addDocumentListener(createDocumentListener(() -> {
             int width = parseSafeInt(widthField.getText());
@@ -43,7 +43,7 @@ public class PropertyPanel extends JPanel implements Observer {
             controller.resize(width, height);
         }));
 
-        JLabel heightLabel = new JLabel("Height:");
+        JLabel heightLabel = new JLabel("높이:");
         heightField = new JTextField(10);
         heightField.getDocument().addDocumentListener(createDocumentListener(() -> {
             int width = parseSafeInt(widthField.getText());
