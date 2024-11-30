@@ -17,34 +17,28 @@ public class EllipseShape extends AbstractShape {
 
     @Override
     public void draw(Graphics2D g2) {
-        int minX = Math.min(x1, x2);
-        int minY = Math.min(y1, y2);
-        int width = Math.abs(x2 - x1);
-        int height = Math.abs(y2 - y1);
-
-        g2.drawOval(minX, minY, width, height);
+        g2.setColor(color);
+        g2.drawOval(x, y, width, height);
     }
 
     @Override
     public String getX() {
-        return String.valueOf(x1);
+        return String.valueOf(x);
     }
 
     @Override
     public String getY() {
-        return String.valueOf(y1);
+        return String.valueOf(y);
     }
 
     @Override
     public void setX(int x) {
-        x2 = x2 - x1 + x;
-        x1 = x;
+        this.x = x;
     }
 
     @Override
     public void setY(int y) {
-        y2 = y2 - y1 + y;
-        y1 = y;
+        this.y = y;
     }
 
     @Override
@@ -59,11 +53,11 @@ public class EllipseShape extends AbstractShape {
 
     @Override
     public void setWidth(int width) {
-        x2 = x1 + width;
+        this.width = width;
     }
 
     @Override
     public void setHeight(int height) {
-        y2 = y1 + height;
+        this.height = height;
     }
 }

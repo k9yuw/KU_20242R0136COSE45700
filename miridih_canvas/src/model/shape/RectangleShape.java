@@ -27,24 +27,22 @@ public class RectangleShape extends AbstractShape {
 
     @Override
     public String getX() {
-        return String.valueOf(x1);
+        return String.valueOf(x);
     }
 
     @Override
     public String getY() {
-        return String.valueOf(y1);
+        return String.valueOf(y);
     }
 
     @Override
     public void setX(int x) {
-        x2 = x2 - x1 + x;
-        x1 = x;
+        this.x = x;
     }
 
     @Override
     public void setY(int y) {
-        y2 = y2 - y1 + y;
-        y1 = y;
+        this.y = y;
     }
 
     @Override
@@ -59,11 +57,11 @@ public class RectangleShape extends AbstractShape {
 
     @Override
     public void setWidth(int width) {
-        x2 = x1 + width;
+        this.width = width;
     }
 
     @Override
     public void setHeight(int height) {
-        y2 = y1 + height;
+        this.height = height;
     }
 }
