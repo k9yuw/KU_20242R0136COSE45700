@@ -2,17 +2,17 @@ package model.shape;
 
 import java.awt.*;
 
-public class RectangleShape extends AbstractShape {
+public class EllipseShape extends AbstractShape {
 
     private int x, y, width, height;
 
-    public RectangleShape(int x1, int y1, int x2, int y2, Color color) {
+    public EllipseShape(int x1, int y1, int x2, int y2, Color color) {
         super(x1, y1, x2, y2, color);
 
         this.x = Math.min(x1, x2);
         this.y = Math.min(y1, y2);
-        width = Math.abs(x2 - x1);
-        height = Math.abs(y2- y1);
+        this.width = Math.abs(x2 - x1);
+        this.height = Math.abs(y2 - y1);
     }
 
     @Override
@@ -22,7 +22,7 @@ public class RectangleShape extends AbstractShape {
         int width = Math.abs(x2 - x1);
         int height = Math.abs(y2 - y1);
 
-        g2.drawRect(minX, minY, width, height);
+        g2.drawOval(minX, minY, width, height);
     }
 
     @Override
