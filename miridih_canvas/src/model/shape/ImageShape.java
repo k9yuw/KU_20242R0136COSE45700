@@ -21,7 +21,6 @@ public class ImageShape extends AbstractShape {
     @Override
     public void draw(Graphics2D g2) {
         if (image != null) {
-            // 이미지를 x, y 좌표에 width x height 크기로 그립니다.
             g2.drawImage(image, x, y, width, height, null);
         }
     }
