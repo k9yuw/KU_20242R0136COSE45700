@@ -47,6 +47,14 @@ public class ShapeManager implements Subject{
         notifyObservers();
     }
 
+    public void removeShape(ShapeInterface shapeInterface) {
+        if (shapes.remove(shapeInterface)) {
+            // 만약 선택된 도형이라면 selection에서도 제거
+            shapeSelection.removeAll();
+            notifyObservers();
+        }
+    }
+
     // 기능 2: object를 multi select 할 수 있다.
     public void selectShape(int x, int y) {
         ShapeInterface shape = findShapeAt(x, y);
