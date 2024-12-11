@@ -94,11 +94,12 @@ public class PropertyPanel extends JPanel implements Observer {
     @Override
     public void update() {
         ShapeInterface shape = shapeManager.getShapeSelection();
-
-        xField.setText(String.valueOf(shape.getX()));
-        yField.setText(String.valueOf(shape.getY()));
-        widthField.setText(String.valueOf(shape.getWidth()));
-        heightField.setText(String.valueOf(shape.getHeight()));
+        SwingUtilities.invokeLater(() -> {
+            xField.setText(String.valueOf(shape.getX()));
+            yField.setText(String.valueOf(shape.getY()));
+            widthField.setText(String.valueOf(shape.getWidth()));
+            heightField.setText(String.valueOf(shape.getHeight()));
+        });
     }
 
     // DocumentListener 생성 메서드

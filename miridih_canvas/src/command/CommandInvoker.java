@@ -1,40 +1,33 @@
 package command;
 
+import command.Command;
+
 import java.util.Stack;
 
 public class CommandInvoker {
-    private Stack<Command> undoStack = new Stack<>();
-    private Stack<Command> redoStack = new Stack<>();
+    private CommandInvoker(){}
+
+    private Stack<Command> executeHistory = new Stack<>();
+
+    private static CommandInvoker instance;
+
+    public static CommandInvoker getInstance() {
+        if(instance == null) {
+            instance = new CommandInvoker();
+        }
+        return instance;
+    }
 
     public void executeCommand(Command command) {
         command.execute();
-        if (command.isUndoable()) {
-            undoStack.push(command);
-            redoStack.clear();
+        if(command.isUndoable()){
+            executeHistory.push(command);
         }
     }
 
-    public void undo() {
-        if (!undoStack.isEmpty()) {
-            Command command = undoStack.pop();
-            command.undo();
-            redoStack.push(command);
-        }
+
+    public boolean isUndoable(){
+        return executeHistory.size() > 0;
     }
 
-    public void redo() {
-        if (!redoStack.isEmpty()) {
-            Command command = redoStack.pop();
-            command.execute();
-            undoStack.push(command);
-        }
-    }
-
-    public boolean isUndoable() {
-        return !undoStack.isEmpty();
-    }
-
-    public boolean isRedoable() {
-        return !redoStack.isEmpty();
-    }
 }

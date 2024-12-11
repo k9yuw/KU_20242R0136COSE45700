@@ -7,10 +7,15 @@ public class MoveSelectedShapesCommand implements Command {
     private ShapeManager shapeManager;
     private int dx, dy;
 
-    public MoveSelectedShapesCommand(ShapeManager shapeManager, int dx, int dy) {
+    public MoveSelectedShapesCommand(ShapeManager shapeManager, int x1, int y1, int x2, int y2){
         this.shapeManager = shapeManager;
-        this.dx = dx;
-        this.dy = dy;
+        this.dx= x2 - x1;
+        this.dy = y2 - y1;
+    }
+    public MoveSelectedShapesCommand(ShapeManager shapeManager, int x, int y){
+        this.shapeManager = shapeManager;
+        this.dx =  x - Integer.parseInt(shapeManager.getShapeSelection().getX());
+        this.dy=  y - Integer.parseInt(shapeManager.getShapeSelection().getY()) ;
     }
 
     @Override

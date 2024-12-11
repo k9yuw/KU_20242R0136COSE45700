@@ -1,18 +1,19 @@
 package model;
 
-import lombok.NoArgsConstructor;
 import model.shape.ShapeSelectionComposite;
 import view.Observer;
 
 import java.util.ArrayList;
-import java.util.Collections;
 
-@NoArgsConstructor
 public class ShapeManager implements Subject{
+
+    public ShapeManager() {
+    }
 
     private ArrayList<Observer> observers = new ArrayList<>();
     private ArrayList<ShapeInterface> shapes = new ArrayList<>();
     private ShapeSelectionComposite shapeSelection = new ShapeSelectionComposite();
+
 
     public ArrayList<ShapeInterface> getShapes() {
         return shapes;
@@ -90,37 +91,20 @@ public class ShapeManager implements Subject{
         notifyObservers();
     }
 
-    // 기능 6-1: 선택된 도형의 순서 한 칸 앞으로 이동
-    public void moveZOrderForward(ShapeInterface shape) {
-        int index = shapes.indexOf(shape);
-        if (index >= 0 && index < shapes.size() - 1) {
-            Collections.swap(shapes, index, index + 1);
-            notifyObservers();
-        }
-    }
-
-    // 기능 6-2: 선택된 도형의 순서 한 칸 앞으로 이동
-    public void moveZOrderBackward(ShapeInterface shape) {
-        int index = shapes.indexOf(shape);
-        if (index > 0) {
-            Collections.swap(shapes, index, index - 1);
-            notifyObservers();
-        }
-    }
-
-    // 기능 6-3: 선택된 도형의 순서 맨 앞으로 이동
-    public void moveZOrderToMostFront(ShapeInterface shape) {
-        if (shapes.remove(shape)) {
+    // 기능 6: 도형의 z-order 조절
+    public void sendSelectedToFront() {
+        for(ShapeInterface shape : shapeSelection){
+            shapes.remove(shape);
             shapes.add(0, shape);
-            notifyObservers();
         }
+        notifyObservers();
     }
 
-    // 기능 6-4: 선택된 도형의 순서 맨 뒤로 이동
-    public void moveZOrderToMostBack(ShapeInterface shape) {
-        if (shapes.remove(shape)) {
+    public void sendSelectedToBack() {
+        for(ShapeInterface shape : shapeSelection){
+            shapes.remove(shape);
             shapes.add(shape);
-            notifyObservers();
         }
+        notifyObservers();
     }
 }
